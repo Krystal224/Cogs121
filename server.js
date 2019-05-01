@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({extended: true})); // hook up with your app
 
 app.use(express.static('public'));
 
-app.get('/home', (req, res) => {
+
+app.get('/trends', (req, res) => {
   googleTrends.dailyTrends({
     geo: 'US',
   }, (err, results) => {

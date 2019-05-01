@@ -1,5 +1,3 @@
-
-
 var fs = require('fs');
 var csv = require('fast-csv');
 fs.createReadStream('articles.csv')

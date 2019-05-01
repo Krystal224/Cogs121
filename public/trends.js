@@ -1,7 +1,7 @@
 // jQuery convention for running when the document has been fully loaded:
 $(document).ready(() => {
   $.ajax({
-    url: 'home',
+    url: 'trends',
     type: 'GET',
     dataType: 'json',
     success: (data) => {
