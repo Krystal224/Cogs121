@@ -4,13 +4,26 @@
   <title>Cogs121</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="trends.js"></script>
+  <!-- <script type="text/javascript" src="trends.js"></script> -->
+  <script>
+  $(document).ready(() => {
+    $.ajax({
+      url: 'trends/',
+      type: 'GET',
+      dataType: 'json',
+      success: (data) => {        
+        $('#trends').html(data);
+      }
+    });
+  });
+
+  </script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Trends</h1>
-    <p id="trends"/>
+    <div id="trends"></div>
   </div>
 </body>
 </html>

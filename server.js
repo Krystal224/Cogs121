@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({extended: true})); // hook up with your app
 
 app.use(express.static('public'));
 
-app.get('/home', (req, res) => {
+
+app.get('/trends', (req, res) => {
   googleTrends.dailyTrends({
     geo: 'US',
   }, (err, results) => {
@@ -23,7 +24,7 @@ app.get('/home', (req, res) => {
       results = results[0].trendingSearchesDays;
       results = results[0].trendingSearches;
       results = results.map(result => {
-        return result.title.query;        
+        return result.title.query;
       });
       // results = Object.keys(results);
       res.send(results);
