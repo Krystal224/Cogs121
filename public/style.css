@@ -6,8 +6,18 @@
   margin-left: auto;
 }
 
-#data {
-  background-color: red;
+
+
+.trend-data {
+
+  cursor: pointer;
+}
+
+.writing-data {
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 @media (min-width: 576px) {

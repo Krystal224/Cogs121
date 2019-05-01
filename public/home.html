@@ -4,19 +4,10 @@
   <title>Cogs121</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="trends.js"></script> 
+  <script type="text/javascript" src="trends.js"></script>
+  <script type="text/javascript" src="writing.js"></script>
 
   <script>
-  $(document).ready(() => {
-    $.ajax({
-      url: 'trends/',
-      type: 'GET',
-      dataType: 'json',
-      success: (data) => {
-        $('#trends').html(data);
-      }
-    });
-  });
 
   $(document).ready(() => {
     $.ajax({
@@ -32,7 +23,7 @@
 
 
   </script>
-  
+
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -40,7 +31,9 @@
     <h1>Trends</h1>
     <div id="trends"></div>
 
-    <h1>Writing Hub</h1>
+    <h1>Writing Tips</h1>
+      <button class="tips" id="tip1">What is a good title</button>
+      <button class="tips" id="tip2">How to write good article</button>
 
     	 <!-- {{#each object.0.data}}
     	<div class="container">
@@ -63,9 +56,9 @@
 
 
   </div>
-      <div class="container">
+      <!-- <div class="container">
         <h1> Writing</h1>
         <div id="writing"></div>
-      </div>
+      </div> -->
 </body>
 </html>

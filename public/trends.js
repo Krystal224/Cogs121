@@ -5,10 +5,20 @@ $(document).ready(() => {
     type: 'GET',
     dataType: 'json',
     success: (data) => {
-      data = data.map(data => {
-        const tag = $('<button id="data">' + data + '</button>');
+      data = data.map((data, i) => {
+        const tag = $("<button class=\"trend-data\" name=\"" + data + "\" id= " + "trend" + i + ">" + data + "</button>");
         tag.appendTo('#trends');
       })
     }
   });
+  $('body').on('click', '.trend-data', function (e) {
+    e.preventDefault();
+    const target = this.id;
+    const name = this.name;
+    console.log(name);
+    const requestURL = 'trends.html';
+    $(location).attr('href', requestURL);
+  });
+
+  
 });
