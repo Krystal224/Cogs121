@@ -23,12 +23,25 @@ app.get('/home', (req, res) => {
       results = results[0].trendingSearchesDays;
       results = results[0].trendingSearches;
       results = results.map(result => {
-        return result.title.query;        
+        return result.title.query;
       });
       // results = Object.keys(results);
       res.send(results);
     }
   });
+})
+
+
+const sqlite3 = require('sqlite3');
+const db = new sqlite3.Database('articles.db');
+
+db.serialize(() => {
+  //create a new database table
+  db.run("CREAT TABLE articles_users (title TEXT, article TEXT, author TEXT, clap TEXT )");
+  //insert all the data:
+  db.run("INSERT INTO articles_users VALUES ()");
+
+
 })
 
 
