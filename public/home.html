@@ -4,14 +4,68 @@
   <title>Cogs121</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="trends.js"></script>  
+  <script type="text/javascript" src="trends.js"></script> 
+
+  <script>
+  $(document).ready(() => {
+    $.ajax({
+      url: 'trends/',
+      type: 'GET',
+      dataType: 'json',
+      success: (data) => {
+        $('#trends').html(data);
+      }
+    });
+  });
+
+  $(document).ready(() => {
+    $.ajax({
+      url: 'writing/',
+      type: 'GET',
+      dataType: 'json',
+      success: (data) => {
+        $('#writing').html(data);
+      }
+    });
+  });
+
+
+
+  </script>
+  
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Trends</h1>
     <div id="trends"></div>
+
     <h1>Writing Hub</h1>
+
+    	 <!-- {{#each object.0.data}}
+    	<div class="container">
+    	<div>
+        <text>{{title}}</text><br>
+    		<text>{{author}}</text><br>
+    		<text>{{claps}}</text><br>
+        <text>{{reading_time}}</text><br>
+        <text>{{link}}</text><br>
+    	</div>
+
+    	</div>
+    	<hr> -->
+      <hr>
+
+
+  <!--   {{/each}} -->
+
+
+
+
   </div>
+      <div class="container">
+        <h1> Writing</h1>
+        <div id="writing"></div>
+      </div>
 </body>
 </html>

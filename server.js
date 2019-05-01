@@ -3,6 +3,10 @@ const app = express();
 //Google trends api
 const googleTrends = require('google-trends-api');
 const bodyParser = require('body-parser');
+// const writing = require('test.json');
+var fs = require('fs');
+var csv = require('fast-csv');
+
 app.use(bodyParser.urlencoded({extended: true})); // hook up with your app
 //Interface with SQLite database
 // const sqlite3 = require('sqlite3');
@@ -33,18 +37,13 @@ app.get('/trends', (req, res) => {
 })
 
 
-// const sqlite3 = require('sqlite3');
-// const db = new sqlite3.Database('articles.db');
-//
-// db.serialize(() => {
-//   //create a new database table
-//   db.run("CREAT TABLE articles_users (title TEXT, article TEXT, author TEXT, clap TEXT )");
-//   //insert all the data:
-//   db.run("INSERT INTO articles_users VALUES ()");
-//
-//
-// })
-
+app.get('/Writing', function (req, res) {
+  fs.readFile('test.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    obj = data;
+    res.send(JSON.stringify(obj));
+  });
+})
 
 // start the server at URL: http://localhost:3000/
 app.listen(3000, () => {
