@@ -1,3 +1,5 @@
+
+
 var fs = require('fs');
 var csv = require('fast-csv');
 fs.createReadStream('articles.csv')
@@ -11,5 +13,12 @@ fs.createReadStream('articles.csv')
 
   });
 
+
 // let data = JSON.stringify(csv);
 // fs.writeFileSync('articles.json', data);
+
+// fs.readFile('test.json', 'utf8', function (err, data) {
+//   if (err) throw err;
+//   obj = JSON.parse(data);
+//   res.send(JSON.stringify(obj));
+// });
