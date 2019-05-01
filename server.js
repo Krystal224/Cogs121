@@ -33,6 +33,19 @@ app.get('/trends', (req, res) => {
 })
 
 
+const sqlite3 = require('sqlite3');
+const db = new sqlite3.Database('articles.db');
+
+db.serialize(() => {
+  //create a new database table
+  db.run("CREAT TABLE articles_users (title TEXT, article TEXT, author TEXT, clap TEXT )");
+  //insert all the data:
+  db.run("INSERT INTO articles_users VALUES ()");
+
+
+})
+
+
 // start the server at URL: http://localhost:3000/
 app.listen(3000, () => {
   console.log('Server started at http://localhost:3000/');
