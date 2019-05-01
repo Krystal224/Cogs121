@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 // const writing = require('test.json');
 var fs = require('fs');
 var csv = require('fast-csv');
+const sqlite3 = require('sqlite3');
+const db = new sqlite3.Database('writings.db');
+
 
 app.use(bodyParser.urlencoded({extended: true})); // hook up with your app
 //Interface with SQLite database
@@ -36,14 +39,31 @@ app.get('/trends', (req, res) => {
   });
 })
 
+app.get('trends/:trendname', (req, res) => {
+  const name = req.params.trendname; // matches ':userid' above
 
-app.get('/Writing', function (req, res) {
-  fs.readFile('test.json', 'utf8', function (err, data) {
-    if (err) throw err;
-    obj = data;
-    res.send(JSON.stringify(obj));
-  });
 })
+
+
+// app.get('/Writing', function (req, res) {
+//   fs.readFile('test.json', 'utf8', function (err, data) {
+//     if (err) throw err;
+//     data = JSON.stringify(data);
+//     // data = data[0];
+//     res.send(data);
+//   });
+// })
+
+app.get('/writing', (req, res) => {
+  // db.all() fetches all results from an SQL query into the 'rows' variable:
+  db.all('SELECT title FROM writings', (err, rows) => {
+    console.log(rows);
+    rows = rows.map(rows => rows.title);
+    res.send(rows);
+  });
+});
+
+
 
 // start the server at URL: http://localhost:3000/
 app.listen(3000, () => {
